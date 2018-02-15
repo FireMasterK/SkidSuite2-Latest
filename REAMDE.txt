@@ -1,0 +1,82 @@
+======================================================================
+=                           SkidSuite 2.0                            =
+======================================================================
+Question: What does each program do?
+
+Skidfuscator:
+	- An obfuscator that can do the following:
+		- Shrinking/Optimization:
+			- Remove debug info
+			- Remove unused classes
+		- Obfucation
+			- Rename classes/fields/methods/locals
+			- Insert decompiler-breaking code
+			- Obfuscate strings
+SkidVisualizer:
+	- A code analysis and decompiler tool.
+	- Drag a jar onto the side panel and click a file to decompile.
+		- Right click on refrences in the decompiled source 
+		  (ASM view only) for option
+			- View parents/interfaces/children of class
+			- Show stack simulation
+			- Show class relations (WIP)
+			- Find references to objects
+	- Decompile classes with Procyon
+MappingUtil:
+	- Has three main functions:
+	- Correlation
+		- Given a target and clean jar + before/after names of class 
+		  files the target jar will have its classes/fields/methods 
+		  renamed automatically. The process requires the class files 
+		  are the exact same (structure wise. Names do not matter). 
+		  Only one file similarity is needed. The rest are automated 
+		  if future possible class matches are determined to be 
+		  the same.
+		- The final mappings are applied and saved as Enigma mappings
+	- Processing:
+		- Given a path to a jar file and mappings, will apply the
+		  mappings to the jar and export a jar with updated 
+		  class/field/method names.
+	- Conversion:
+		- Given a mapping file, can convert mappings between multiple 
+		  formats.
+		- Currently supported: Proguard, SRG, Enigma
+ObfuRemover:
+	- Removes DashO, ZKM5, and some older Stringer string encryption 
+	  techniques.
+	- Requires -noverify to run
+Scanner:
+	- Scans for jars in the same directory (or sub-directories) 
+	  and when clicked will scan and show where malicious intent 
+	  can be found. It's not a gurentee just a possibility.
+
+	------------------------------------------------------------
+
+Question: Help, something's not working!
+
+Everything requires Java 8 to run. If you do not have Java 8 installed
+install it and uninstall outdated versions. 
+
+For more information on "oh no it broken!!1", run the jar file through 
+command line. For windows you can make a batch file with the following 
+command:
+	java -jar JAR_NAME.jar
+	pause
+Save and run the batch file. The error that causes the program not to
+work will most likey be put in console. If it's related to a 
+VerifyError edit the batch file so that it looks like this:
+	java -jar -noverify JAR_NAME.jar
+Run the batch file and if the program crashes again send me the crash 
+and provide any resouces you were using that caused the crash. 
+Attempts that I cannot fix unless this info is provided and is not 
+given with the crash log will be IGNORED.
+
+For Mac/Unix systems I believe you make a SH file. You execute jars 
+the same way but the 'pause' command will not be valid. You may not 
+even need it on unix systems. 
+
+	------------------------------------------------------------
+Question: I have an idea that I'd like to add to SkidSuite!
+
+Go to the Github page and open an issue and detail your idea. 
+If it's useful I'll try to implement it.
